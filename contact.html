@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | CHARLY.</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">CHARLY.</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="photos.html">PHOTOS</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 100px; padding: 0 5%; flex-grow: 1; display: flex; flex-direction: column; align-items: center;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500;">Let's work together.</h1>
+            <p style="color: var(--text-muted);">¿Tienes un proyecto en mente? Hablemos.</p>
+        </div>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 4rem; width: 100%; max-width: 900px; justify-content: space-between;">
+            <!-- Información -->
+            <div style="flex: 1; min-width: 250px;">
+                <h2 style="font-size: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid #222; padding-bottom: 0.5rem;">Información de contacto</h2>
+                <p style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--text-muted); display: block; margin-bottom: 0.2rem;">Email:</strong>
+                    carlosmoralesfotografo@gmail.com
+                </p>
+                <p>
+                    <strong style="color: var(--text-muted); display: block; margin-bottom: 0.2rem;">Instagram:</strong>
+                    @charly.ph.arg
+                </p>
+            </div>
+
+            <!-- Formulario -->
+            <div style="flex: 2; min-width: 300px;">
+                <form style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <input type="text" placeholder="Tu nombre" style="background: transparent; border: 1px solid #333; padding: 1rem; color: var(--text-main); outline: none;">
+                    <input type="email" placeholder="Tu correo electrónico" style="background: transparent; border: 1px solid #333; padding: 1rem; color: var(--text-main); outline: none;">
+                    <input type="text" placeholder="Asunto (Ej: Retrato, Branding)" style="background: transparent; border: 1px solid #333; padding: 1rem; color: var(--text-main); outline: none;">
+                    <textarea rows="5" placeholder="Cuéntame sobre tu proyecto..." style="background: transparent; border: 1px solid #333; padding: 1rem; color: var(--text-main); outline: none; resize: vertical;"></textarea>
+                    <button type="submit" class="btn-explore" style="border: none; cursor: pointer; align-self: flex-start;">SEND MESSAGE &rarr;</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 CHARLY. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://instagram.com/charly.ph.arg" target="_blank">Instagram</a>
+            <a href="mailto:carlosmoralesfotografo@gmail.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html>
