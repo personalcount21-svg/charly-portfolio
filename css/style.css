@@ -249,4 +249,18 @@ body {
 
 body {
     animation: fadeInPage 0.4s ease-out forwards;
+}/* Transición base para los elementos de la galería */
+.photo-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estado cuando el elemento está oculto por el filtro */
+.photo-item.hidden {
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+    /* Usamos display none pero con retraso en la opacidad para que luzca fluido si se combina con JS */
+    display: none !important; 
 }

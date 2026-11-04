@@ -60,4 +60,37 @@ document.addEventListener('DOMContentLoaded', () => {
             lightbox.style.display = 'none';
         });
     }
+});const filterButtons = document.querySelectorAll('.gallery-filters button');
+const photoItems = document.querySelectorAll('.photo-item');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remover clase activa del botón actual y ponérsela al presionado
+        filterButtons.forEach(btn => btn.style.color = 'var(--text-muted)');
+        filterButtons.forEach(btn => btn.style.border = '1px solid #333');
+        
+        button.style.color = 'var(--text-main)';
+        button.style.border = '1px solid var(--text-main)';
+
+        const selectedCategory = button.textContent.toLowerCase();
+
+        photoItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+
+            if (selectedCategory === 'all' || itemCategory === selectedCategory) {
+                item.style.display = 'block';
+                // Pequeño timeout para asegurar que el navegador detecta el cambio de display antes de animar la opacidad
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(15px)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 400); // Coincide con la duración del CSS (0.4s)
+            }
+        });
+    });
 });
