@@ -1,46 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.gallery-filters button');
-    // Asumiremos que añadirás un atributo data-category a cada imagen en HTML luego
-    const photos = document.querySelectorAll('.gallery-grid .photo-item'); 
+    
+    // Seleccionamos tanto las fotos como los banners de "Próximamente"
+    const galleryItems = document.querySelectorAll('.gallery-grid .photo-item, .gallery-grid .coming-soon-banner');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Quitar clase activa de todos los botones
+            // Quitar estilo activo de todos los botones
             filterButtons.forEach(btn => {
                 btn.style.color = 'var(--text-muted)';
                 btn.style.borderColor = '#333';
             });
             
-            // Añadir clase activa al botón clickeado
+            // Añadir estilo activo al botón presionado
             button.style.color = 'var(--text-main)';
             button.style.borderColor = 'var(--text-main)';
 
-            const filterValue = button.textContent.toLowerCase();
+            const filterValue = button.textContent.trim().toLowerCase();
 
-            // Lógica básica de filtrado visual
-            photos.forEach(photo => {
-                // En un futuro, aquí verificarás el data-category de cada foto
+            // Filtrar elementos (fotos y banners)
+            galleryItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                const isBanner = item.classList.contains('coming-soon-banner');
+
                 if (filterValue === 'all') {
-                    photo.style.display = 'flex';
+                    // En "ALL" mostramos las fotos pero ocultamos los banners
+                    if (isBanner) {
+                        item.style.display = 'none';
+                    } else {
+                        item.style.display = 'flex'; // O 'block' según prefieras para tus fotos
+                    }
                 } else {
-                    photo.style.display = 'none'; // Oculta todas las fotos por defecto, requiere ajuste de HTML
+                    // Si se elige una categoría específica (ej. fashion, conceptual, etc.)
+                    if (category === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 }
             });
         });
     });
-});// Lógica del Lightbox para ampliar imágenes
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const galleryPhotos = document.querySelectorAll('.gallery-photo');
 
-galleryPhotos.forEach(photo => {
-    photo.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = photo.src;
+    // Lógica del Lightbox para ampliar imágenes
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryPhotos = document.querySelectorAll('.gallery-photo');
+
+    galleryPhotos.forEach(photo => {
+        photo.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = photo.src;
+        });
     });
-});
 
-// Cerrar al hacer clic en cualquier parte de la pantalla oscura
-lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
+    // Cerrar al hacer clic en cualquier parte de la pantalla oscura
+    if (lightbox) {
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    }
 });

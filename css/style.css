@@ -201,4 +201,52 @@ body {
 
 .gallery-photo:hover {
     transform: scale(1.02);
+}.coming-soon-banner {
+    width: 100%;
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    border-radius: 8px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.coming-soon-banner h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.coming-soon-banner p {
+    font-size: 1rem;
+    color: #666666;
+}@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#lightbox-img {
+    animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: fadeInPage 0.4s ease-out forwards;
 }
