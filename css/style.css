@@ -194,21 +194,22 @@ body {
   display: none !important;
 }
 
-/* Banners de Próximamente */
+/* Banners de Próximamente (Actualizados acorde al estilo cinematográfico oscuro) */
 .coming-soon-banner {
   width: 100%;
   padding: 4rem 2rem;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #111111;
+  color: var(--text-main);
   text-align: center;
-  border-radius: 8px;
+  border: 1px solid #222;
+  border-radius: 4px;
   margin: 2rem 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .coming-soon-banner h2 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -216,7 +217,7 @@ body {
 
 .coming-soon-banner p {
   font-size: 1rem;
-  color: #666666;
+  color: var(--text-muted);
 }
 
 /* Lightbox Animado y Optimizado */
@@ -285,21 +286,7 @@ body {
   color: var(--text-main);
 }
 
-/* Diseño Móvil */
-@media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-    padding-top: 2rem;
-  }
-  .hero-text {
-    align-items: center;
-  }
-  .title {
-    font-size: 2.5rem;
-  }
-}/* Estilos específicos para la sección About / Contacto */
+/* Estilos específicos para la sección About / Contacto */
 .about-section {
   flex-grow: 1;
   display: flex;
@@ -330,8 +317,20 @@ body {
   justify-content: center;
 }
 
-/* Responsivo para dispositivos móviles */
+/* Diseño Móvil Responsivo */
 @media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+  .hero-text {
+    align-items: center;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
   .about-container {
     flex-direction: column;
     text-align: center;
