@@ -18,31 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const filterValue = button.textContent.trim().toLowerCase();
 
-            // Filtrar elementos (fotos y banners)
+            // Filtrar elementos con animación fluida
             galleryItems.forEach(item => {
                 const category = item.getAttribute('data-category');
                 const isBanner = item.classList.contains('coming-soon-banner');
 
-                if (filterValue === 'all') {
-                    // En "ALL" mostramos las fotos pero ocultamos los banners
-                    if (isBanner) {
-                        item.style.display = 'none';
-                    } else {
-                        item.style.display = 'flex'; // O 'block' según prefieras para tus fotos
-                    }
+                const matches = (filterValue === 'all' && !isBanner) || (category === filterValue);
+
+                if (matches) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
                 } else {
-                    // Si se elige una categoría específica (ej. fashion, conceptual, etc.)
-                    if (category === filterValue) {
-                        item.style.display = 'block';
-                    } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(15px)';
+                    setTimeout(() => {
                         item.style.display = 'none';
-                    }
+                    }, 400); // Coincide con la transición CSS
                 }
             });
         });
     });
 
-    // Lógica del Lightbox para ampliar imágenes
+    // Lógica del Lightbox para ampliar imágenes de forma limpia
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const galleryPhotos = document.querySelectorAll('.gallery-photo');
@@ -60,37 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
             lightbox.style.display = 'none';
         });
     }
-});const filterButtons = document.querySelectorAll('.gallery-filters button');
-const photoItems = document.querySelectorAll('.photo-item');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remover clase activa del botón actual y ponérsela al presionado
-        filterButtons.forEach(btn => btn.style.color = 'var(--text-muted)');
-        filterButtons.forEach(btn => btn.style.border = '1px solid #333');
-        
-        button.style.color = 'var(--text-main)';
-        button.style.border = '1px solid var(--text-main)';
-
-        const selectedCategory = button.textContent.toLowerCase();
-
-        photoItems.forEach(item => {
-            const itemCategory = item.getAttribute('data-category');
-
-            if (selectedCategory === 'all' || itemCategory === selectedCategory) {
-                item.style.display = 'block';
-                // Pequeño timeout para asegurar que el navegador detecta el cambio de display antes de animar la opacidad
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 50);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(15px)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 400); // Coincide con la duración del CSS (0.4s)
-            }
-        });
-    });
 });
